@@ -5,6 +5,7 @@ BOT_NAME = 'tecmundo'
 SPIDER_MODULES = ['crawlers.spiders']
 NEWSPIDER_MODULE = 'crawlers.spiders'
 
+# LOG_LEVEL = 'INFO'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'crawlers (+http://www.yourdomain.com)'
@@ -56,7 +57,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'crawlers.pipelines.CrawlersPipeline': 300,
+    'crawlers.pipelines.MongoPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

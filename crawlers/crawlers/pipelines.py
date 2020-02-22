@@ -6,7 +6,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class CrawlersPipeline(object):
+class MongoPipeline(object):
+    """Persist the item on mongodb"""
 
     collection_name = 'noticias'
 

@@ -1,16 +1,24 @@
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 from datetime import datetime
+import logging
 import re
 
 from crawlers.loaders import CrawlersLoader
+from .constants import XPATHS_TECMUNDO, GARBAGE_LIST
 
-from .constants import XPATHS_TECMUNDO, BLACK_LIST
-
+logger = logging.getLogger(__name__)
 
 def get_dados(response):
+    """get the news data"""
+
+    logger.info(u'Iniciando extraçao dos dados da noticia')
+
     meta = response.meta.copy()
     resultados = re.search(r'\d+.\d+', meta['resultados']).group(0)
+
+    mensagem = u'Encontrados {} resultados'.format(resultados)
+    logger.info(mensagem)
 
     dados = get_dados_paragrafo(response)
 
@@ -28,12 +36,16 @@ def get_dados(response):
 
     yield item
 
+    logger.info(u'Extraçao finalizada')
+
 
 def get_dados_paragrafo(response):
+    """get text data"""
+
     text = [BeautifulSoup(text, features="lxml").get_text()
             for text in response.xpath('.//p').getall()]
 
-    lista = BLACK_LIST
+    lista = GARBAGE_LIST
     texto = text[2:]
     for item in lista:
         for linha in texto:

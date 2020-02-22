@@ -1,4 +1,8 @@
-START_URL = 'http://www.tecmundo.com.br/novidades/'
+# -*- coding: utf-8 -*-
+
+START_URL = u'http://www.tecmundo.com.br/novidades/'
+
+URL_PAGINACAO = u'http://www.tecmundo.com.br/novidades/?page={}'.format
 
 XPATHS_TECMUNDO = {
     '_resultados': (u'//div[contains(@class, "tec--page-filters")]'
@@ -15,6 +19,6 @@ XPATHS_TECMUNDO = {
                u'div/a/text()'),
 }
 
-BLACK_LIST = [u'PUBLICIDADE',
-              u'© COPYRIGHT 2020 - NO ZEBRA NETWORK S.A. TODOS OS '
-              'DIREITOS RESERVADOS.',  'Cupons de desconto TecMundo:']
+GARBAGE_LIST = [u'PUBLICIDADE',
+                u'© COPYRIGHT 2020 - NO ZEBRA NETWORK S.A. TODOS OS '
+                u'DIREITOS RESERVADOS.',  'Cupons de desconto TecMundo:']
