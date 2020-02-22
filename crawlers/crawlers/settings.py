@@ -2,8 +2,9 @@
 
 BOT_NAME = 'tecmundo'
 
-SPIDER_MODULES = ['crawlers.spiders']
-NEWSPIDER_MODULE = 'crawlers.spiders'
+SPIDER_MODULES = ['crawlers.tecmundo',
+                  'crawlers.tecblog']
+# NEWSPIDER_MODULE = 'crawlers.spiders'
 
 # LOG_LEVEL = 'INFO'
 
