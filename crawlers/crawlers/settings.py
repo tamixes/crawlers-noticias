@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-BOT_NAME = 'tecmundo'
+# BOT_NAME = 'tecmundo'
 
 SPIDER_MODULES = ['crawlers.tecmundo',
                   'crawlers.tecblog']
@@ -16,7 +16,7 @@ ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
-
+LOG_STDOUT = True
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs

@@ -5,7 +5,7 @@ import logging
 import re
 
 from crawlers.loaders import CrawlersLoader
-from .constants import XPATHS_TECMUNDO, GARBAGE_LIST
+from .constants import XPATHS_TECMUNDO
 
 logger = logging.getLogger(__name__)
 
@@ -42,23 +42,16 @@ def get_dados(response):
 def get_dados_paragrafo(response):
     """Extrai o texto da noticia, quantidade de paragrafos e palavras"""
 
-    text = [BeautifulSoup(text, features="lxml").get_text()
-            for text in response.xpath('.//p').getall()]
+    texto = response.xpath(XPATHS_TECMUNDO['_texto']).getall()
+    text = [BeautifulSoup(text, features="lxml").get_text() for text in texto]
 
-    lista = GARBAGE_LIST
-    texto = text[2:]
-    for item in lista:
-        for linha in texto:
-            if item in linha:
-                index = texto.index(linha)
-                texto.pop(index)
-
-    materia = ' '.join(texto)
+    materia = ' '.join(text)
     palavras = len(materia.split())
 
     dados = {
         'texto': materia,
         'palavras': palavras,
-        'paragrafos': len(texto),
+        'paragrafos': len(text),
     }
+
     return dados

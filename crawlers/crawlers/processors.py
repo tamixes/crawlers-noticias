@@ -9,7 +9,9 @@ def string_to_date_processor(string):
     if type(string) == list:
         string = string[0]
     string = string.replace('T', ' ')
+    string = string.replace('+00:00', '')
     date = datetime.strptime(string, '%Y-%m-%d %H:%M:%S')
+
     return date
 
 

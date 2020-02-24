@@ -20,3 +20,4 @@ class CrawlersItem(Item):
     tempo_leitura = Field()
     total_resultados = Field()
     spider_name = Field()
+    sub_titulo = Field()

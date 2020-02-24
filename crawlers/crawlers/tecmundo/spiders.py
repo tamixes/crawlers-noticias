@@ -22,6 +22,7 @@ class TecmundoSpider(scrapy.Spider):
 
     def start_requests(self):
         """Da start em todas as requisições das paginas iniciais"""
+
         for i in range(1, self.paginas+1):
             yield scrapy.Request(
                 url=URL_PAGINACAO(i),
@@ -44,5 +45,6 @@ class TecmundoSpider(scrapy.Spider):
             yield scrapy.Request(
                 url=url,
                 callback=get_dados,
-                meta=meta
+                meta=meta,
+                dont_filter=True,
             )
