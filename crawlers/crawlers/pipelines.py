@@ -3,11 +3,13 @@
 import pymongo
 import logging
 
+from .utils import get_spider_name
+
 logger = logging.getLogger(__name__)
 
 
 class MongoPipeline(object):
-    """Persist the item on mongodb"""
+    """Persiste os dados no mongo"""
 
     collection_name = 'noticias'
 
@@ -30,6 +32,7 @@ class MongoPipeline(object):
         self.client.close()
 
     def process_item(self, item, spider):
+        item = get_spider_name(spider, item)
         self.db[self.collection_name].find_one_and_update(
             {"url": item["url"]},
             {"$set": dict(item)},

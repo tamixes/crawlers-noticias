@@ -16,23 +16,20 @@ class TecmundoSpider(scrapy.Spider):
     start_urls = [START_URL]
 
     def __init__(self, paginas, *args, **kwargs):
-        """Check if have `paginas`, case not, set default as 3"""
-
         super(TecmundoSpider, self).__init__(*args, **kwargs)
-        if paginas:
-            self.paginas = int(paginas)
-        else:
-            self.paginas = 3
+
+        self.paginas = int(paginas)
 
     def start_requests(self):
-        """Make requests to all pages, the default is 3"""
+        """Da start em todas as requisições das paginas iniciais"""
         for i in range(1, self.paginas+1):
             yield scrapy.Request(
                 url=URL_PAGINACAO(i),
                 callback=self.parse
             )
+
     def parse(self, response):
-        """make requests to each url on the page"""
+        """Faz as requisiçoes para cada noticia da pagina"""
 
         meta = response.meta.copy()
         total_resultados = response.xpath(XPATHS_TECMUNDO

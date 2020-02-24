@@ -9,11 +9,11 @@ from .constants import XPATHS_TECMUNDO, GARBAGE_LIST
 
 logger = logging.getLogger(__name__)
 
+
 def get_dados(response):
-    """get the news data"""
+    """Extrai os dados da noticia"""
 
     logger.info(u'Iniciando extraçao dos dados da noticia')
-
     meta = response.meta.copy()
     resultados = re.search(r'\d+.\d+', meta['resultados']).group(0)
 
@@ -30,7 +30,7 @@ def get_dados(response):
         'paragrafos': dados['paragrafos'],
         'palavras': dados['palavras'],
         'total_resultados': resultados,
-        'data_consulta': datetime.now()
+        'data_consulta': datetime.now(),
         })
     item = loader.load_item()
 
@@ -40,7 +40,7 @@ def get_dados(response):
 
 
 def get_dados_paragrafo(response):
-    """get text data"""
+    """Extrai o texto da noticia, quantidade de paragrafos e palavras"""
 
     text = [BeautifulSoup(text, features="lxml").get_text()
             for text in response.xpath('.//p').getall()]

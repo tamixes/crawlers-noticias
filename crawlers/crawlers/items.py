@@ -4,7 +4,7 @@ from scrapy.item import Item, Field
 
 
 class CrawlersItem(Item):
-    """Items for the crawlers"""
+    """Items dos Crawlers"""
 
     url = Field()
     autor = Field()
@@ -19,3 +19,4 @@ class CrawlersItem(Item):
     fontes = Field()
     tempo_leitura = Field()
     total_resultados = Field()
+    spider_name = Field()
