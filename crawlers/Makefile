@@ -8,3 +8,11 @@ test:
 
 coverage:
 	pytest --cov=crawlers
+
+run: 
+	@mkdir -p logs
+	python entrypoint.py
+
+clean_logs:
+	@find . -name "tecmundo.log" -exec rm -rf {} \;
+	@find . -name "tecblog.log" -exec rm -rf {} \;
