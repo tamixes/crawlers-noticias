@@ -22,7 +22,3 @@ XPATHS_TECMUNDO = {
                u' "truncat"))and not(contains(@class, "tec--footer")) '
                u'and not(contains(., "Cupons"))]')
 }
-
-GARBAGE_LIST = [u'PUBLICIDADE',
-                u'© COPYRIGHT 2020 - NO ZEBRA NETWORK S.A. TODOS OS '
-                u'DIREITOS RESERVADOS.',  'Cupons de desconto TecMundo:']
