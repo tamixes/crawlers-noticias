@@ -6,7 +6,7 @@
 diretório `crawlers`, execute: `make help`. O projeto faz uso de `.env` para o set dos valores das quantidades
 de páginas que o scraping acontecerá. Por padrão os valores já estão setados no arquivo `.env` localizado na pasta
 `crawlers`. Os valores padrões são: 10 para `tecblog`e 10 para `tecmundo`, caso deseje alterar a quantidade
-de paginas apenas altere no arqivo `.env`.
+de paginas apenas altere no arquivo `.env`.
 
 ## Como executar o projeto
 
